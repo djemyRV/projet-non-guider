@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/test_example_class.dir/test_example_class.cpp.o -o test_example_class  ../src/libMyCppLib.a 

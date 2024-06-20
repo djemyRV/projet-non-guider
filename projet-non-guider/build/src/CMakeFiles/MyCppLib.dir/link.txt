@@ -1,0 +1,2 @@
+/usr/bin/ar qc libMyCppLib.a CMakeFiles/MyCppLib.dir/factorial.cpp.o CMakeFiles/MyCppLib.dir/fibonacci.cpp.o CMakeFiles/MyCppLib.dir/palindrome.cpp.o CMakeFiles/MyCppLib.dir/prime.cpp.o CMakeFiles/MyCppLib.dir/example_class.cpp.o
+/usr/bin/ranlib libMyCppLib.a
