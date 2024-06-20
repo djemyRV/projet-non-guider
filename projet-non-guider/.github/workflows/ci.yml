@@ -1,29 +1,27 @@
 name: CI
+
 on: [push, pull_request]
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build and Test  # Nom du job
+
     steps:
     - uses: actions/checkout@v2
-    - name: Set up CMake
 
+    - name: Set up CMake
       uses: lukka/get-cmake@v3
+
     - name: Configure and build
       run: |
         cmake -S . -B build
         cmake --build build
+
     - name: Run tests
       run: |
         cd build
         ctest --output-on-failure
+
     - name: Generate Doxygen documentation
-      run: |
-        cd build
-        make doc_doxygen
-    - name: Deploy documentation to GitHub Pages
-      if: success()
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs/html
+      if: always()
+      run: cmake --build build --target doc_doxygen
