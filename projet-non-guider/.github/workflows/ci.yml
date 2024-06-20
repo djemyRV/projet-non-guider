@@ -1,17 +1,25 @@
-name: CIon: [push, pull_request]jobs:
+name:
+ CIon: [push, pull_request]
+jobs:
   build:
-    runs-on: ubuntu-latest    steps:
-    - uses: actions/checkout@v2    - name: Set up CMake
-      uses: lukka/get-cmake@v3    - name: Configure and build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up CMake
+      uses: lukka/get-cmake@v3
+    - name: Configure and build
       run: |
         cmake -S . -B build
-        cmake --build build    - name: Run tests
+        cmake --build build 
+   - name: Run tests
       run: |
         cd build
-        ctest --output-on-failure    - name: Generate Doxygen documentation
+        ctest --output-on-failure
+    - name: Generate Doxygen documentation
       run: |
         cd build
-        make doc_doxygen    - name: Deploy documentation to GitHub Pages
+        make doc_doxygen   
+    - name: Deploy documentation to GitHub Pages
       if: success()
       uses: peaceiris/actions-gh-pages@v3
       with:
