@@ -1,0 +1,7 @@
+PROJECT_NAME           = "projet_non_guider"
+OUTPUT_DIRECTORY       = "docs"
+GENERATE_LATEX         = NO
+EXTRACT_ALL            = NO
+RECURSIVE              = YES
+INPUT                  = @CMAKE_SOURCE_DIR@/include
+FILE_PATTERNS          = *.h
