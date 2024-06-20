@@ -1,9 +1,13 @@
 cmake_minimum_required(VERSION 3.10)
 project(projet_non_guider)
+
+# Include directories
 add_subdirectory(src)
 add_subdirectory(tests)
+
 # Enable testing
 enable_testing()
+
 # Doxygen configuration
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
@@ -14,7 +18,8 @@ if(DOXYGEN_FOUND)
         COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
         COMMENT "Generating API documentation with Doxygen"
-        VERBATIM)
+        VERBATIM
+    )
 endif()
 
 # Function to generate the README.md file
@@ -116,5 +121,6 @@ function(generate_readme)
         "Pour plus de détails sur le fonctionnement du projet et l'utilisation des différents outils, consultez le fichier [how-it-works.md](./docs/how-it-works.md).\n"
     )
 endfunction()
-# Call the function to generate the README.md
+
+# Appel de la fonction pour générer le README.md
 generate_readme()
